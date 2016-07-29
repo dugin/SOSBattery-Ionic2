@@ -1,0 +1,88 @@
+
+<ion-header>
+   
+  <ion-navbar>
+     <ion-title> SOS Battery</ion-title>
+     <ion-buttons end>
+      <button (click)="filterSelected()">
+        <ion-icon name="funnel"></ion-icon>
+      </button>
+    </ion-buttons>
+   
+    
+  </ion-navbar>
+   
+
+</ion-header>
+
+<ion-content class="list">
+  
+  
+   <ion-list>
+      <ion-item (click)='selectStore(e)'  *ngFor="let e of estabelecimentosAbertos" >
+
+   
+        <ion-avatar item-left>
+      <img src={{e.imgURL}} height="100" width="100">
+    </ion-avatar>  
+    <h2 >{{e.nome}} </h2>
+    <br>
+     <p class="end">{{e.end}} </p>
+     <p class="end">{{e.bairro}} </p>
+     <br>
+     <ion-icon style="float:right; display: inline-block; margin-left: 5px"  name="walk"></ion-icon>
+     
+      <p style="float:right; display: inline-block; margin-top: 5px"  >
+        <font color="black"><b>{{e.dist}}</b></font> 
+        </p>
+      
+      <p style="float:left; display: inline-block;  margin-top: 5px"  >
+        
+        <font color="#589e3f"><b>{{(showHrFunc(e.hr_open, e.hr_close))}}</b></font> 
+        </p>
+
+
+    
+      </ion-item>
+    </ion-list>
+     <ion-list-header *ngIf="haveStoreClosed">
+   Fechados 
+  </ion-list-header>
+
+    <ion-list>
+      <ion-item style="opacity: 0.3" (click)='selectStore(e)' *ngFor="let e of estabelecimentosFechados" >
+
+   
+        <ion-avatar item-left>
+      <img src={{e.imgURL}} height="100" width="100">
+    </ion-avatar>  
+    <h2 >{{e.nome}} </h2>
+    <br>
+     <p class="end">{{e.end}} </p>
+     <p class="end">{{e.bairro}} </p>
+     <br>
+     <ion-icon style="float:right; display: inline-block; margin-left: 5px"  name="walk"></ion-icon>
+     
+      <p style="float:right; display: inline-block; margin-top: 5px"  >
+        <font color="black"><b>{{e.dist}}</b></font> 
+        </p>
+      
+      <p style="float:left; display: inline-block;  margin-top: 5px"  >
+        
+        <font color="#589e3f"><b>{{(showHrFunc(e.hr_open, e.hr_close))}}</b></font> 
+        </p>
+
+
+    
+      </ion-item>
+    </ion-list>
+
+    <div *ngIf="noStoresNearby">
+
+      <center><h4> Nenhum estabelecimento encontrado </h4> </center>
+
+   <center>    <img style="top: 50%; transform: translateY(+25%);" src="./images/no_stores_found.png" height="40%" width="65%"></center>
+    </div>
+ 
+ 
+</ion-content>

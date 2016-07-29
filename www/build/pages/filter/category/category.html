@@ -1,0 +1,23 @@
+
+
+<ion-content>
+  
+   <ion-item   >
+    <ion-icon name="close" item-right large (click)="close()"></ion-icon>
+    </ion-item   >
+  
+  
+   <ion-list>
+      <ion-item  *ngFor="let c of categoria; let i = index" >
+
+<ion-label>{{c.nome}}</ion-label>
+    <ion-checkbox [(ngModel)]="c.selected" >   </ion-checkbox>
+
+
+   
+      </ion-item>
+    </ion-list>
+    
+ <center> <button (click)="save()"> Selecionar </button> </center>
+ 
+</ion-content>
